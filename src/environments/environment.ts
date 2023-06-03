@@ -3,6 +3,6 @@ export const environment = {
   https: false,
   environmentName: 'development',
   API_URL: 'https://localhost:7111/api/',
-  BASE_SIGNAL: 'https://localhost:7111/',
+  BASE_SIGNAL: 'https://localhost:7111',
   HOSTED_URL: 'localhost:4500/'
 };

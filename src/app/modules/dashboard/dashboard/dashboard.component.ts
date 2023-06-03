@@ -6,8 +6,10 @@ import { SignalrService } from 'src/app/core/signalR/signalr.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
-  constructor(private signalrService: SignalrService) {
+  constructor(private signalrService: SignalrService) { }
+
+  ngOnInit(): void {
   }
 }

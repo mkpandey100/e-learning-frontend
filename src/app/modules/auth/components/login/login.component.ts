@@ -34,22 +34,18 @@ export class LoginComponent implements OnDestroy {
 
   login() {
     this.isLoading = true;
-
     const credentials = this.loginForm.value;
 
-    this.sub = this.authService
-      .login(credentials)
-      .pipe(
-        delay(0),
-        tap(() => this.router.navigate(['/dashboard'])),
-        finalize(() => (this.isLoading = false)),
-        catchError(error => of((this.error = error)))
-      )
-      .subscribe();
+    this.authService.login(credentials).subscribe((resp: any) => {
+      console.log(resp);
+      localStorage.setItem('accessToken', resp?.data[0].accessToken);
+      localStorage.setItem('fullName', resp?.data[0].name);
+      this.router.navigate(['/dashboard']);
+    });
   }
   private initForm() {
     return new UntypedFormGroup({
-      username: new UntypedFormControl(''),
+      email: new UntypedFormControl(''),
       password: new UntypedFormControl('')
     });
   }
